@@ -1,7 +1,9 @@
 import CircularProgress from "@material-ui/core/CircularProgress";
 import React, { useState, useEffect } from "react";
 import Turntable from "./turntable/Turntable";
-import findNearRestaurants from "../apis/findNearRestaurants";
+import findNearRestaurants, {
+  RestaurantProps,
+} from "../apis/findNearRestaurants";
 
 export interface TurntableProps {
   prize: string[];
@@ -42,6 +44,7 @@ export interface Places {
 
 function App() {
   const [isSuccess, setIsSuccess] = useState(false);
+  const [restaurantProps, setRestaurantProps] = useState<RestaurantProps>();
 
   const positionOptions = {
     enableHighAccuracy: false,
@@ -53,7 +56,9 @@ function App() {
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         if (!isSuccess) {
-          findNearRestaurants(pos.coords.latitude, pos.coords.longitude);
+          setRestaurantProps(
+            findNearRestaurants(pos.coords.latitude, pos.coords.longitude)
+          );
           setIsSuccess(true);
         }
       },
@@ -69,7 +74,7 @@ function App() {
   return (
     <div className="App">
       {isSuccess ? (
-        <Turntable></Turntable>
+        <Turntable restaurants={restaurantProps!.restaurants}></Turntable>
       ) : (
         <CircularProgress></CircularProgress>
       )}

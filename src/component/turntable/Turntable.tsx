@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Message from "rc-message";
 import ReactTurntable from "react-turntable";
 import "react-turntable/assets/index.css";
 import "rc-message/assets/index.css";
+import { RestaurantProps } from "../../apis/findNearRestaurants";
 
-const prizes = ["밥", "고기"];
+const [prizes, setPrizes] = useState(["hi", "hello"]);
 
 const options = {
   prizes,
@@ -34,7 +35,20 @@ const options = {
   },
 };
 
-const Turntable: React.FC = () => {
+const Turntable: React.FC<RestaurantProps> = (restaurantProps) => {
+  const [isRendered, setIsRendered] = useState(false);
+
+  useEffect(() => {
+    if (!isRendered) {
+      const re = restaurantProps.restaurants.map((value) => {
+        // prizes.push(value.name);
+        return value.name;
+      });
+      setPrizes(re);
+    }
+    setIsRendered(true);
+  }, [isRendered, restaurantProps]);
+
   return (
     <div>
       <ReactTurntable {...options}></ReactTurntable>
