@@ -1,13 +1,10 @@
 import React from 'react';
 import { Restaurant } from '../../apis/findNearRestaurants';
 
-const MenuItem: React.FC<Restaurant> = (name, count) => {
-    console.log(name);
-    console.log(count);
+const MenuItem: React.FC<Restaurant> = (restaurant) => {
     return (
         <div>
-            아이템
-            {name} {count}
+            {restaurant.name} {restaurant.count}
         </div>
     );
 };

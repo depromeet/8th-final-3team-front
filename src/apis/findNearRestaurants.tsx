@@ -11,15 +11,15 @@ export interface Restaurant {
 }
 
 export default async function findNearRestaurants(latitude: number, longitude: number): Promise<RestaurantProps> {
-    let restaurants: Restaurant[] = [];
-
-    CATEGORIES.forEach(async (category) => {
+    const places = CATEGORIES.map((category) => {
         const query = makeQuery(latitude, longitude, category);
-        const value = await fetchData<Places>(MAP_API_URL, query);
-        if (value.documents.length > 0) {
-            restaurants.push({ name: category, count: value.documents.length });
-        }
+        return fetchData<Places>(MAP_API_URL, query);
     });
 
-    return { restaurants: restaurants };
+    const responses = await Promise.all(places);
+    const restaurants: Restaurant[] = responses.map((res, idx) => {
+        return { name: CATEGORIES[idx], count: res.documents.length };
+    });
+
+    return { restaurants };
 }

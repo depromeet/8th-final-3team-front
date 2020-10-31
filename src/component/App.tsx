@@ -44,30 +44,35 @@ function App() {
     const [isSuccess, setIsSuccess] = useState(false);
     const [restaurantProps, setRestaurantProps] = useState<RestaurantProps>();
 
-    const positionOptions = {
-        enableHighAccuracy: false,
-        maximumAge: 0,
-        timeout: 500,
-    };
-
-    useEffect(async () => {
-        if (!isSuccess) {
-            setRestaurantProps(await findNearRestaurants(37.402056, 127.108212));
-            setIsSuccess(true);
+    useEffect(() => {
+        async function getRestaurants() {
+            if (!isSuccess) {
+                setRestaurantProps(await findNearRestaurants(37.402056, 127.108212));
+                setIsSuccess(true);
+            }
         }
+        getRestaurants();
+
         // navigator.geolocation.getCurrentPosition(
         //     (pos) => {
-        //         if (!isSuccess) {
-        //             setRestaurantProps(findNearRestaurants(pos.coords.latitude, pos.coords.longitude));
-        //             setIsSuccess(true);
+        //         async function getRestaurants() {
+        //             if (!isSuccess) {
+        //                 setRestaurantProps(await findNearRestaurants(pos.coords.latitude, pos.coords.longitude));
+        //                 setIsSuccess(true);
+        //             }
         //         }
+        //         getRestaurants();
         //     },
         //     (error) => {
         //         console.log('Error Code: ' + error.code + ', Error Description: ' + error.message);
         //     },
-        //     positionOptions
+        //     {
+        //         enableHighAccuracy: false,
+        //         maximumAge: 30000,
+        //         timeout: 5000,
+        //     }
         // );
-    }, [isSuccess, positionOptions, restaurantProps]);
+    }, [isSuccess]);
 
     return (
         <div className="App">
