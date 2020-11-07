@@ -42,7 +42,6 @@ export interface Meta {
     total_count: number;
 }
 
-
 export default async function findNearRestaurants(latitude: number, longitude: number): Promise<RestaurantProps> {
     const places = CATEGORIES.map((category) => {
         const query = makeQuery(latitude, longitude, category);
@@ -51,7 +50,7 @@ export default async function findNearRestaurants(latitude: number, longitude: n
 
     const responses = await Promise.all(places);
     const restaurants: Restaurant[] = responses.map((res, idx) => {
-        return { name: CATEGORIES[idx], count: res.documents.length };
+        return { name: CATEGORIES[idx], count: res.meta.total_count };
     });
 
     return { restaurants };
