@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from '../home/Home';
-import Restaurants from '../restaurant/Main';
+import Restaurants from '../restaurant/Restaurants';
 
 const Router: React.FC = () => {
     return (
