@@ -2,6 +2,7 @@ import { AxiosRequestConfig } from 'axios';
 
 const API_KEY = 'e098b0846d802c97d805c329d7b138d0';
 export const MAP_API_URL = 'https://dapi.kakao.com/v2/local/search/keyword.json';
+export const MAP_DETAIL_API_URL = 'http://3.35.58.142:8080/api/place/';
 
 export const API_HEADER: AxiosRequestConfig = {
     headers: {
@@ -11,6 +12,6 @@ export const API_HEADER: AxiosRequestConfig = {
 
 export const CATEGORIES = ['한식', '중식', '양식', '일식', '분식'];
 
-export function makeQuery(latitude: number, longitude: number, category: string): string[] {
-    return [`y=${latitude}`, `x=${longitude}`, 'radius=20000', `query=${category}`];
+export function makeQuery(latitude: number, longitude: number, category: string, page: number = 1): string[] {
+    return [`y=${latitude}`, `x=${longitude}`, 'radius=500', `query=${category}`, `page=${page}`];
 }

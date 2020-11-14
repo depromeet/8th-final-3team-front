@@ -6,7 +6,15 @@ const Menu: React.FC<RestaurantProps> = (restaurantProps) => {
     return (
         <div>
             {restaurantProps.restaurants.map((restaurant, idx) => {
-                return <MenuItem key={idx} name={restaurant.name} count={restaurant.count}></MenuItem>;
+                return (
+                    <MenuItem
+                        key={idx}
+                        id={idx}
+                        name={restaurant.name}
+                        count={restaurant.count}
+                        restaurants={restaurant.restaurants}
+                    ></MenuItem>
+                );
             })}
         </div>
     );

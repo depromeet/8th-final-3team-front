@@ -1,21 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Restaurant } from '../../apis/findNearRestaurants';
+import { useHistory } from 'react-router-dom';
+import { RestaurantDetail } from '../../apis/findNearRestaurants';
 
-const MenuItem: React.FC<Restaurant> = (restaurant) => {
+const MenuItem: React.FC<RestaurantDetail> = (restaurant) => {
+    const history = useHistory();
+
     return (
         <div>
-            <Link
-                to={{
-                    pathname: 'restaurants',
-                    state: {
-                        name: restaurant.name,
-                        count: restaurant.count,
-                    },
-                }}
-            >
+            <button onClick={() => history.push(`/restaurants/${restaurant.id}`, { restaurant: restaurant })}>
                 {restaurant.name} {restaurant.count}
-            </Link>
+            </button>
         </div>
     );
 };

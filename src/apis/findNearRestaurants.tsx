@@ -2,11 +2,13 @@ import { CATEGORIES, makeQuery, MAP_API_URL } from '../utils/Constant';
 import fetchData from './fetchData';
 
 export interface RestaurantProps {
-    restaurants: Restaurant[];
+    restaurants: RestaurantDetail[];
 }
-export interface Restaurant {
+export interface RestaurantDetail {
+    id: number;
     name: string;
     count: number;
+    restaurants: Place[];
 }
 
 interface Places {
@@ -49,8 +51,8 @@ export default async function findNearRestaurants(latitude: number, longitude: n
     });
 
     const responses = await Promise.all(places);
-    const restaurants: Restaurant[] = responses.map((res, idx) => {
-        return { name: CATEGORIES[idx], count: res.meta.total_count };
+    const restaurants: RestaurantDetail[] = responses.map((res, idx) => {
+        return { id: idx, name: CATEGORIES[idx], count: res.meta.total_count, restaurants: res.documents };
     });
 
     return { restaurants };
