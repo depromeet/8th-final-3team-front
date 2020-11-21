@@ -10,7 +10,7 @@ export const API_HEADER: AxiosRequestConfig = {
     },
 };
 
-export const CATEGORIES = ['한식', '중식', '양식', '일식', '분식'];
+export const CATEGORIES = ['한식', '중식', '양식', '일식', '분식', '동남아 음식'];
 
 export function makeQuery(latitude: number, longitude: number, category: string, page: number = 1): string[] {
     return [`y=${latitude}`, `x=${longitude}`, 'radius=500', `query=${category}`, `page=${page}`];

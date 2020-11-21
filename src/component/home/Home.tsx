@@ -1,7 +1,10 @@
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 import React, { useState, useEffect } from 'react';
 import findNearRestaurants, { RestaurantProps } from '../../apis/findNearRestaurants';
-import Menu from '../menu/Menu';
+import Address from '../address/Address';
+import Category from '../category/Category';
+import Title from '../title/Title';
+import Turntable from '../turntable/TurntableSix';
 
 function Home() {
     const [isSuccess, setIsSuccess] = useState(false);
@@ -39,8 +42,11 @@ function Home() {
 
     return (
         <div className="Home">
+            <Address></Address>
+            <Title></Title>
+            <Turntable></Turntable>
             {isSuccess ? (
-                <Menu restaurants={restaurantProps!.restaurants}></Menu>
+                <Category restaurants={restaurantProps!.restaurants}></Category>
             ) : (
                 <CircularProgress></CircularProgress>
             )}

@@ -10,18 +10,18 @@ interface MenuProps {
 }
 
 interface RestuarantListDetail {
-    placeId: number,
-    title: string,
-    photo: string,
-    address: string,
-    zipCode: string,
-    point: string,
+    placeId: number;
+    title: string;
+    photo: string;
+    address: string;
+    zipCode: string;
+    point: string;
 }
 
 const RestaurantsListPage: React.FC = () => {
     const location = useLocation();
     const menuProps = location.state as MenuProps;
-    const menuProps.restaurant.restaurants.map( (restaurant) => {
+    menuProps.restaurant.restaurants.map((restaurant) => {
         fetchData(MAP_DETAIL_API_URL + restaurant.id, []);
     });
     return (
