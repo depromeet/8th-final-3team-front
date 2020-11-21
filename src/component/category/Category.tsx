@@ -9,17 +9,20 @@ const Category: React.FC<RestaurantProps> = (restaurantProps) => {
                 <h2>카테고리</h2>
                 <h3>도보 10분 이내</h3>
             </div>
-            {restaurantProps.restaurants.map((restaurant, idx) => {
-                return (
-                    <Menu
-                        key={idx}
-                        id={idx}
-                        name={restaurant.name}
-                        count={restaurant.count}
-                        restaurants={restaurant.restaurants}
-                    ></Menu>
-                );
-            })}
+            <div className="category__buttons">
+                {restaurantProps.restaurants.map((restaurant, idx) => {
+                    return (
+                        <Menu
+                            key={idx}
+                            id={idx}
+                            name={restaurant.name}
+                            count={restaurant.count}
+                            icon={restaurant.icon}
+                            restaurants={restaurant.restaurants}
+                        ></Menu>
+                    );
+                })}
+            </div>
         </div>
     );
 };

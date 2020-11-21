@@ -14,6 +14,7 @@
         "@types/react-dom": "^16.9.8",
         "@types/react-router-dom": "^5.1.6",
         "axios": "^0.20.0",
+        "gh-pages": "^3.1.0",
         "http-proxy-middleware": "^1.0.5",
         "json2typescript": "^1.4.1",
         "prettier": "^2.1.2",

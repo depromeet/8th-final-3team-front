@@ -21,9 +21,14 @@ interface RestuarantListDetail {
 const RestaurantsListPage: React.FC = () => {
     const location = useLocation();
     const menuProps = location.state as MenuProps;
-    menuProps.restaurant.restaurants.map((restaurant) => {
-        fetchData(MAP_DETAIL_API_URL + restaurant.id, []);
+    const list = menuProps.restaurant.restaurants.map((restaurant) => {
+        return fetchData(MAP_DETAIL_API_URL + restaurant.id, []);
     });
+    const datas = Promise.all(list).then((res) => {
+        console.log(res);
+    });
+    console.dir(datas);
+
     return (
         <div>
             {menuProps.restaurant.restaurants.map((restaurant) => {

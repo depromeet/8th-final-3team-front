@@ -8,6 +8,7 @@ export interface RestaurantDetail {
     id: number;
     name: string;
     count: number;
+    icon: string;
     restaurants: Place[];
 }
 
@@ -46,13 +47,19 @@ export interface Meta {
 
 export default async function findNearRestaurants(latitude: number, longitude: number): Promise<RestaurantProps> {
     const places = CATEGORIES.map((category) => {
-        const query = makeQuery(latitude, longitude, category);
+        const query = makeQuery(latitude, longitude, category.name);
         return fetchData<Places>(MAP_API_URL, query);
     });
 
     const responses = await Promise.all(places);
     const restaurants: RestaurantDetail[] = responses.map((res, idx) => {
-        return { id: idx, name: CATEGORIES[idx], count: res.meta.total_count, restaurants: res.documents };
+        return {
+            id: idx,
+            name: CATEGORIES[idx].name,
+            count: res.meta.total_count,
+            icon: CATEGORIES[idx].icon,
+            restaurants: res.documents,
+        };
     });
 
     return { restaurants };
