@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import fetchData from '../../apis/fetchData';
 import { RestaurantDetail } from '../../apis/findNearRestaurants';
 import { MAP_DETAIL_API_URL } from '../../utils/Constant';
+import KakaoMap from './KakaoMap';
 import RestaurantItem from './RestaurantItem';
 
 interface MenuProps {
@@ -21,16 +22,22 @@ interface RestuarantListDetail {
 const RestaurantsListPage: React.FC = () => {
     const location = useLocation();
     const menuProps = location.state as MenuProps;
+
+    // TODO : 상세 페이지 정보 얻어오는 코드 작성, CSS 작업
     const list = menuProps.restaurant.restaurants.map((restaurant) => {
         return fetchData(MAP_DETAIL_API_URL + restaurant.id, []);
     });
     const datas = Promise.all(list).then((res) => {
-        console.log(res);
+        // console.log(res);
     });
-    console.dir(datas);
+    // console.dir(datas);
 
     return (
         <div>
+            <KakaoMap
+                latitude={menuProps.restaurant.nowLatitude}
+                longitude={menuProps.restaurant.nowLongitude}
+            ></KakaoMap>
             {menuProps.restaurant.restaurants.map((restaurant) => {
                 return (
                     <RestaurantItem

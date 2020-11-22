@@ -1,7 +1,7 @@
 {
     "homepage": "https://depromeet.github.io/8th-final-3team-front",
     "name": "8th-final-3team-front",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "private": true,
     "dependencies": {
         "@material-ui/core": "^4.11.0",

@@ -1,6 +1,6 @@
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 import React, { useState, useEffect } from 'react';
-import findNearRestaurants, { RestaurantProps } from '../../apis/findNearRestaurants';
+import findNearRestaurants, { NearRestaurantProps } from '../../apis/findNearRestaurants';
 import Address from '../address/Address';
 import Category from '../category/Category';
 import Title from '../title/Title';
@@ -8,7 +8,7 @@ import Turntable from '../turntable/TurntableSix';
 
 function Home() {
     const [isSuccess, setIsSuccess] = useState(false);
-    const [restaurantProps, setRestaurantProps] = useState<RestaurantProps>();
+    const [restaurantProps, setRestaurantProps] = useState<NearRestaurantProps>();
 
     useEffect(() => {
         async function getRestaurants() {
@@ -46,7 +46,11 @@ function Home() {
             <Title></Title>
             <Turntable></Turntable>
             {isSuccess ? (
-                <Category restaurants={restaurantProps!.restaurants}></Category>
+                <Category
+                    restaurants={restaurantProps!.restaurants}
+                    nowLatitude={restaurantProps!.nowLatitude}
+                    nowLongitude={restaurantProps!.nowLongitude}
+                ></Category>
             ) : (
                 <CircularProgress></CircularProgress>
             )}

@@ -1,8 +1,8 @@
 import React from 'react';
-import { RestaurantProps } from '../../apis/findNearRestaurants';
+import { NearRestaurantProps } from '../../apis/findNearRestaurants';
 import Menu from './Menu';
 
-const Category: React.FC<RestaurantProps> = (restaurantProps) => {
+const Category: React.FC<NearRestaurantProps> = (restaurantProps) => {
     return (
         <div className="category">
             <div className="cageory__title-text">
@@ -18,6 +18,8 @@ const Category: React.FC<RestaurantProps> = (restaurantProps) => {
                             name={restaurant.name}
                             count={restaurant.count}
                             icon={restaurant.icon}
+                            nowLatitude={restaurant.nowLatitude}
+                            nowLongitude={restaurant.nowLongitude}
                             restaurants={restaurant.restaurants}
                         ></Menu>
                     );

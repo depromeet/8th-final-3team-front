@@ -1,14 +1,18 @@
 import { CATEGORIES, makeQuery, MAP_API_URL } from '../utils/Constant';
 import fetchData from './fetchData';
 
-export interface RestaurantProps {
+export interface NearRestaurantProps {
     restaurants: RestaurantDetail[];
+    nowLatitude: number;
+    nowLongitude: number;
 }
 export interface RestaurantDetail {
     id: number;
     name: string;
     count: number;
     icon: string;
+    nowLatitude: number;
+    nowLongitude: number;
     restaurants: Place[];
 }
 
@@ -45,7 +49,7 @@ export interface Meta {
     total_count: number;
 }
 
-export default async function findNearRestaurants(latitude: number, longitude: number): Promise<RestaurantProps> {
+export default async function findNearRestaurants(latitude: number, longitude: number): Promise<NearRestaurantProps> {
     const places = CATEGORIES.map((category) => {
         const query = makeQuery(latitude, longitude, category.name);
         return fetchData<Places>(MAP_API_URL, query);
@@ -58,9 +62,11 @@ export default async function findNearRestaurants(latitude: number, longitude: n
             name: CATEGORIES[idx].name,
             count: res.meta.total_count,
             icon: CATEGORIES[idx].icon,
+            nowLatitude: latitude,
+            nowLongitude: longitude,
             restaurants: res.documents,
         };
     });
 
-    return { restaurants };
+    return { restaurants: restaurants, nowLatitude: latitude, nowLongitude: longitude };
 }
