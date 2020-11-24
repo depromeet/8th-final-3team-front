@@ -13,7 +13,7 @@ interface CurrentLocation {
 
 const KakaoMap: React.FC<CurrentLocation> = (location) => {
     useEffect(() => {
-        const container = document.getElementById('kakaomap');
+        const container = document.getElementById('kakaoMap');
         const currentPositionMarker = new window.kakao.maps.LatLng(location.latitude, location.longitude);
         const options = {
             center: new window.kakao.maps.LatLng(location.latitude, location.longitude),
@@ -26,7 +26,7 @@ const KakaoMap: React.FC<CurrentLocation> = (location) => {
         marker.setMap(KakaoMap);
     }, [location.latitude, location.longitude]);
 
-    return <div id="kakaomap" style={{ width: '500px', height: '400px' }}></div>;
+    return <div id="kakaoMap" className="kakaoMap"></div>;
 };
 
 export default KakaoMap;

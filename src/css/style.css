@@ -97,3 +97,72 @@ code {
     width: 30px;
     height: 26px;
 }
+
+.kakaoMap {
+    width: 500px;
+    height: 400px;
+}
+
+.header__restaurantList {
+    background-color: #ffffff !important;
+}
+
+.header__restaurantList-detail {
+    margin-top: 30px;
+    border-top: 1px solid #dcdcdc;
+}
+
+.restaurant__list {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.restaurant__list-text {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.restaurant__list-text h1 {
+    font-size: 17px;
+    line-height: 20px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+
+.restaurant__list-text h2 {
+    font-size: 14px;
+    color: #8c8c8c;
+}
+
+.restaurant__list-detail {
+    display: flex;
+    align-items: center;
+    padding-bottom: 3px;
+}
+
+.restaurant__list-detail img {
+    width: 12px;
+    height: 11px;
+    margin-right: 3px;
+}
+
+.restaurant__list-detail h1 {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 17px;
+    color: #ff7375;
+}
+
+.restaurant__list-img {
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.restaurant__list-img img {
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+}
