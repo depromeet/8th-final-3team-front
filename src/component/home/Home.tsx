@@ -1,6 +1,7 @@
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 import React, { useState, useEffect } from 'react';
-import findNearRestaurants, { NearRestaurantProps } from '../../apis/findNearRestaurants';
+import findAllNearRestaurants from '../../apis/findAllNearRestaurants';
+import { NearRestaurantProps } from '../../apis/findNearRestaurants';
 import Address from '../address/Address';
 import Category from '../category/Category';
 import Title from '../title/Title';
@@ -13,7 +14,7 @@ function Home() {
     useEffect(() => {
         async function getRestaurants() {
             if (!isSuccess) {
-                setRestaurantProps(await findNearRestaurants(37.402056, 127.108212));
+                setRestaurantProps(await findAllNearRestaurants(37.402056, 127.108212));
                 setIsSuccess(true);
             }
         }

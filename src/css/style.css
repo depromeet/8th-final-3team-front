@@ -116,6 +116,7 @@ code {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #dcdcdc;
+    cursor: pointer;
 }
 
 .restaurant__list-text {
@@ -165,4 +166,17 @@ code {
     width: 72px;
     height: 72px;
     border-radius: 8px;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+}
+
+a:hover,
+a:active {
+    text-decoration: none;
+    color: #fff;
+    background-color: #f59000;
 }
