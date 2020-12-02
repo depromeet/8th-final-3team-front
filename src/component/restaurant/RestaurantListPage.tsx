@@ -51,7 +51,6 @@ const RestaurantsListPage: React.FC = () => {
 
     const getNextRestaurants = async () => {
         setFetching(true);
-        console.log(page);
         if (restuarantListDetails.length !== total) {
             setPage(page + 1);
             const nextRestaurantIds = await findNearRestaurants(latitude, longitude, Number(params.id), page);
