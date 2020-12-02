@@ -1,6 +1,7 @@
+import { NearRestaurantProps, RestaurantDetail } from '../component/home/Home';
 import { CATEGORIES, makeQuery, MAP_API_URL } from '../utils/Constant';
 import fetchData from './fetchData';
-import { NearRestaurantProps, Places, RestaurantDetail } from './findNearRestaurants';
+import { Places } from './findNearRestaurants';
 
 export default async function findAllNearRestaurants(
     latitude: number,

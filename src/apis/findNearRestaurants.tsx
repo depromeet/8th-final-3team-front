@@ -1,21 +1,6 @@
 import { CATEGORIES, makeQuery, MAP_API_URL } from '../utils/Constant';
 import fetchData from './fetchData';
 
-export interface NearRestaurantProps {
-    restaurants: RestaurantDetail[];
-    nowLatitude: number;
-    nowLongitude: number;
-}
-export interface RestaurantDetail {
-    id: number;
-    name: string;
-    count: number;
-    icon: string;
-    nowLatitude: number;
-    nowLongitude: number;
-    restaurants: Place[];
-}
-
 export interface Places {
     documents: Place[];
     meta: Meta;
@@ -56,12 +41,13 @@ export interface NextRestaurant {
 export default async function findNearRestaurants(
     latitude: number,
     longitude: number,
-    categoryIndex: number
+    categoryIndex: number,
+    page: number
 ): Promise<NextRestaurant> {
-    const query = makeQuery(latitude, longitude, CATEGORIES[categoryIndex].name);
+    const query = makeQuery(latitude, longitude, CATEGORIES[categoryIndex].name, page);
     const places = await fetchData<Places>(MAP_API_URL, query);
     const nearRestaurantIds = places.documents.map((place) => {
         return Number(place.id);
     });
-    return {ids: nearRestaurantIds};
+    return { ids: nearRestaurantIds };
 }

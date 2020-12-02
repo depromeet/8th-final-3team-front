@@ -1,11 +1,27 @@
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 import React, { useState, useEffect } from 'react';
 import findAllNearRestaurants from '../../apis/findAllNearRestaurants';
-import { NearRestaurantProps } from '../../apis/findNearRestaurants';
+import { Place } from '../../apis/findNearRestaurants';
 import Address from '../address/Address';
 import Category from '../category/Category';
 import Title from '../title/Title';
 import Turntable from '../turntable/TurntableSix';
+
+export interface NearRestaurantProps {
+    restaurants: RestaurantDetail[];
+    nowLatitude: number;
+    nowLongitude: number;
+}
+
+export interface RestaurantDetail {
+    id: number;
+    name: string;
+    count: number;
+    icon: string;
+    nowLatitude: number;
+    nowLongitude: number;
+    restaurants: Place[];
+}
 
 function Home() {
     const [isSuccess, setIsSuccess] = useState(false);

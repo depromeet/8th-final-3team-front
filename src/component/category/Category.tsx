@@ -1,6 +1,16 @@
 import React from 'react';
-import { NearRestaurantProps } from '../../apis/findNearRestaurants';
+import { Place } from '../../apis/findNearRestaurants';
+import { NearRestaurantProps } from '../home/Home';
 import Menu from './Menu';
+
+export interface MenuProps {
+    id: number;
+    total: number;
+    icon: string;
+    nowLatitude: number;
+    nowLongitude: number;
+    restaurants: Place[];
+}
 
 const Category: React.FC<NearRestaurantProps> = (restaurantProps) => {
     return (
@@ -14,9 +24,8 @@ const Category: React.FC<NearRestaurantProps> = (restaurantProps) => {
                     return (
                         <Menu
                             key={idx}
-                            id={idx}
-                            name={restaurant.name}
-                            count={restaurant.count}
+                            id={restaurant.id}
+                            total={restaurant.count}
                             icon={restaurant.icon}
                             nowLatitude={restaurant.nowLatitude}
                             nowLongitude={restaurant.nowLongitude}

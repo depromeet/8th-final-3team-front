@@ -8,7 +8,7 @@ import TacoFood from '../icon/taco.png';
 
 const API_KEY = 'e098b0846d802c97d805c329d7b138d0';
 export const MAP_API_URL = 'https://dapi.kakao.com/v2/local/search/keyword.json';
-export const MAP_DETAIL_API_URL = 'http://3.35.58.142:8080/api/place/';
+export const MAP_DETAIL_API_URL = 'http://amugeonago.appspot.com/api/place/';
 export const BASE_URL = '8th-final-3team-front';
 
 export const API_HEADER: AxiosRequestConfig = {
