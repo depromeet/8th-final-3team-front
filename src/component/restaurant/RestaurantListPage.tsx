@@ -5,6 +5,8 @@ import findNearRestaurants, { Place } from '../../apis/findNearRestaurants';
 import KakaoMap from './KakaoMap';
 import RestaurantItem from './RestaurantItem';
 import { MAP_DETAIL_API_URL } from '../../utils/Constant';
+import { Button, withStyles } from '@material-ui/core';
+import { pink, purple } from '@material-ui/core/colors';
 
 interface RestaurantProps {
     restaurants: Place[];
@@ -25,6 +27,19 @@ export interface RestuarantListDetail {
 interface CategoryId {
     id: string;
 }
+
+const FloatingButton = withStyles((theme) => ({
+    root: {
+        color: theme.palette.getContrastText('#FD4145'),
+        fontWeight: 'bold',
+        backgroundColor: '#FD4145',
+        '&:hover': {
+            backgroundColor: '#FD4145',
+        },
+        position: 'fixed',
+        bottom: 50,
+    },
+}))(Button);
 
 const RestaurantsListPage: React.FC = () => {
     const location = useLocation();
@@ -104,6 +119,7 @@ const RestaurantsListPage: React.FC = () => {
                     );
                 })}
             </div>
+            <FloatingButton>음식점도 골라주세요!</FloatingButton>
         </div>
     );
 };

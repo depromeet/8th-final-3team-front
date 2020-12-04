@@ -100,7 +100,8 @@ code {
 
 .kakaoMap {
     width: 500px;
-    height: 400px;
+    height: 300px;
+    position: fixed;
 }
 
 .header__restaurantList {
@@ -108,14 +109,14 @@ code {
 }
 
 .header__restaurantList-detail {
-    margin-top: 30px;
-    border-top: 1px solid #dcdcdc;
+    padding-top: 320px;
 }
+
 
 .restaurant__list {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #dcdcdc;
+    border-top: 1px solid #dcdcdc;
     cursor: pointer;
 }
 
