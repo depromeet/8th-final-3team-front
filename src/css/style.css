@@ -16,7 +16,7 @@ code {
 }
 
 .Home {
-    padding: 25px;
+    padding: 15px;
 }
 
 .main__title {
@@ -38,6 +38,9 @@ code {
 }
 
 .turntable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-top: 50px;
     padding-bottom: 40px;
     border-bottom: 1px solid #dcdcdc;
@@ -184,4 +187,8 @@ a:active {
 .floating_button__wrapper {
     display: flex;
     justify-content: center;
+}
+
+.roulette_button {
+    position: fixed;
 }
