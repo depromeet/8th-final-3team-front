@@ -15,6 +15,7 @@ const TurntableSix: React.FC = () => {
     const [isNormal, setNormal] = useState(true);
     const [index, setIndex] = useState(0);
     const [isPressed, setPressed] = useState(false);
+    const [isFinished, setFinished] = useState(true);
 
     const totalSpinTime = 4000 + (Math.random() % wheels.length) * 500;
     let spinTime = 0;
@@ -32,6 +33,7 @@ const TurntableSix: React.FC = () => {
             setTimeout(() => {
                 setNormal(true);
                 setPressed(false);
+                setFinished(true);
             }, 2000);
 
             return;
@@ -42,9 +44,12 @@ const TurntableSix: React.FC = () => {
     };
 
     const handleClickButton = () => {
-        rotateWheel(0);
-        setNormal(false);
-        setPressed(true);
+        if (isFinished) {
+            rotateWheel(0);
+            setNormal(false);
+            setPressed(true);
+            setFinished(false);
+        }
     };
 
     return (
