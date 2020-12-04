@@ -14,8 +14,6 @@ const wheels = [WHEEL1, WHEEL2, WHEEL3, WHEEL4, WHEEL5, WHEEL6];
 const TurntableSix: React.FC = () => {
     const [isNormal, setNormal] = useState(true);
     const [index, setIndex] = useState(0);
-    const [isPressed, setPressed] = useState(false);
-    const [isFinished, setFinished] = useState(true);
 
     const totalSpinTime = 4000 + (Math.random() % wheels.length) * 500;
     let spinTime = 0;
@@ -30,11 +28,7 @@ const TurntableSix: React.FC = () => {
 
         if (spinTime >= totalSpinTime) {
             clearTimeout(timer);
-            setTimeout(() => {
-                setNormal(true);
-                setPressed(false);
-                setFinished(true);
-            }, 2000);
+            setTimeout(() => setNormal(true), 2000);
 
             return;
         }
@@ -44,11 +38,9 @@ const TurntableSix: React.FC = () => {
     };
 
     const handleClickButton = () => {
-        if (isFinished) {
+        if (isNormal) {
             rotateWheel(0);
             setNormal(false);
-            setPressed(true);
-            setFinished(false);
         }
     };
 
@@ -57,7 +49,7 @@ const TurntableSix: React.FC = () => {
             <img src={isNormal ? WHEEL_NORMAL : wheels[index]} alt="Turntable"></img>
             <img
                 className="roulette_button"
-                src={isPressed ? ROULETTE_BUTTON_PRESSED : ROULETTE_BUTTON}
+                src={!isNormal ? ROULETTE_BUTTON_PRESSED : ROULETTE_BUTTON}
                 width="88"
                 onClick={handleClickButton}
             />
