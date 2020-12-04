@@ -112,7 +112,6 @@ code {
     padding-top: 320px;
 }
 
-
 .restaurant__list {
     display: flex;
     justify-content: space-between;
@@ -180,4 +179,9 @@ a:active {
     text-decoration: none;
     color: #fff;
     background-color: #f59000;
+}
+
+.floating_button__wrapper {
+    display: flex;
+    justify-content: center;
 }

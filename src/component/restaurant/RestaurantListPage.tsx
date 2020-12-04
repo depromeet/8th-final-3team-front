@@ -38,6 +38,10 @@ const FloatingButton = withStyles((theme) => ({
         },
         position: 'fixed',
         bottom: 50,
+        width: 335,
+        height: 48,
+        borderRadius: 8,
+        fontSize: 17,
     },
 }))(Button);
 
@@ -119,7 +123,9 @@ const RestaurantsListPage: React.FC = () => {
                     );
                 })}
             </div>
-            <FloatingButton>음식점도 골라주세요!</FloatingButton>
+            <div className="floating_button__wrapper">
+                <FloatingButton>음식점도 골라주세요!</FloatingButton>
+            </div>
         </div>
     );
 };
