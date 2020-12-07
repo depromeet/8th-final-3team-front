@@ -6,7 +6,7 @@ import KakaoMap from './KakaoMap';
 import RestaurantItem from './RestaurantItem';
 import { MAP_DETAIL_API_URL } from '../../utils/Constant';
 import { Button, withStyles } from '@material-ui/core';
-import { pink, purple } from '@material-ui/core/colors';
+import WHEEL_NORMAL from '../svg/six_wheel/wheel_normal.svg';
 
 interface RestaurantProps {
     restaurants: Place[];
@@ -87,7 +87,7 @@ const RestaurantsListPage: React.FC = () => {
         const scrollHeight = document.documentElement.scrollHeight;
         const scrollTop = document.documentElement.scrollTop;
         const clientHeight = document.documentElement.clientHeight;
-        if (scrollTop + clientHeight >= scrollHeight - 300 && fetching === false) {
+        if (scrollTop + clientHeight >= scrollHeight - 350 && fetching === false) {
             // 페이지 끝에 도달하면 추가 데이터를 받아온다
             await getNextRestaurants();
         }
@@ -99,8 +99,6 @@ const RestaurantsListPage: React.FC = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     });
-
-    // TODO : 상세 페이지 정보 얻어오는 코드 작성, CSS 작업
 
     return (
         <div className="header__restaurantList">

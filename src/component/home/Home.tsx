@@ -6,6 +6,7 @@ import Address from '../address/Address';
 import Category from '../category/Category';
 import Title from '../title/Title';
 import Turntable from '../turntable/TurntableSix';
+import WHEEL_NORMAL from '../svg/six_wheel/wheel_normal.svg';
 
 export interface NearRestaurantProps {
     restaurants: RestaurantDetail[];
@@ -61,7 +62,16 @@ function Home() {
         <div className="Home">
             <Address></Address>
             <Title></Title>
-            <Turntable></Turntable>
+            {isSuccess ? (
+                <Turntable
+                    restaurants={restaurantProps!.restaurants}
+                    nowLatitude={restaurantProps!.nowLatitude}
+                    nowLongitude={restaurantProps!.nowLongitude}
+                ></Turntable>
+            ) : (
+                <img src={WHEEL_NORMAL} alt="IDLE"></img>
+            )}
+
             {isSuccess ? (
                 <Category
                     restaurants={restaurantProps!.restaurants}

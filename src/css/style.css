@@ -191,4 +191,28 @@ a:active {
 
 .roulette_button {
     position: fixed;
+    cursor: pointer;
+}
+
+.modal__title {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.modal__title h1 {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.modal__title img {
+    width: 30px;
+    height: 26px;
+    margin-right: 4px;
+}
+
+.modal__body {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
 }
