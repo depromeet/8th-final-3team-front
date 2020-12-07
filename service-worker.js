@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/8th-final-3team-front/precache-manifest.887434cc9dca8f15c0e2eb63b510b40c.js"
+  "/8th-final-3team-front/precache-manifest.a27160b8e7bc1833cef2b03507f0f6b0.js"
 );
 
 self.addEventListener('message', (event) => {

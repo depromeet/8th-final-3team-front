@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/8th-final-3team-front/static/css/main.2ba5468e.chunk.css",
-    "main.js": "/8th-final-3team-front/static/js/main.2f7b7cea.chunk.js",
-    "main.js.map": "/8th-final-3team-front/static/js/main.2f7b7cea.chunk.js.map",
+    "main.css": "/8th-final-3team-front/static/css/main.21f989a5.chunk.css",
+    "main.js": "/8th-final-3team-front/static/js/main.8ba8f339.chunk.js",
+    "main.js.map": "/8th-final-3team-front/static/js/main.8ba8f339.chunk.js.map",
     "runtime-main.js": "/8th-final-3team-front/static/js/runtime-main.77a459ee.js",
     "runtime-main.js.map": "/8th-final-3team-front/static/js/runtime-main.77a459ee.js.map",
-    "static/js/2.2536d8c4.chunk.js": "/8th-final-3team-front/static/js/2.2536d8c4.chunk.js",
-    "static/js/2.2536d8c4.chunk.js.map": "/8th-final-3team-front/static/js/2.2536d8c4.chunk.js.map",
+    "static/js/2.59b621b2.chunk.js": "/8th-final-3team-front/static/js/2.59b621b2.chunk.js",
+    "static/js/2.59b621b2.chunk.js.map": "/8th-final-3team-front/static/js/2.59b621b2.chunk.js.map",
     "index.html": "/8th-final-3team-front/index.html",
-    "precache-manifest.887434cc9dca8f15c0e2eb63b510b40c.js": "/8th-final-3team-front/precache-manifest.887434cc9dca8f15c0e2eb63b510b40c.js",
+    "precache-manifest.a27160b8e7bc1833cef2b03507f0f6b0.js": "/8th-final-3team-front/precache-manifest.a27160b8e7bc1833cef2b03507f0f6b0.js",
     "service-worker.js": "/8th-final-3team-front/service-worker.js",
-    "static/css/main.2ba5468e.chunk.css.map": "/8th-final-3team-front/static/css/main.2ba5468e.chunk.css.map",
-    "static/js/2.2536d8c4.chunk.js.LICENSE.txt": "/8th-final-3team-front/static/js/2.2536d8c4.chunk.js.LICENSE.txt",
+    "static/css/main.21f989a5.chunk.css.map": "/8th-final-3team-front/static/css/main.21f989a5.chunk.css.map",
+    "static/js/2.59b621b2.chunk.js.LICENSE.txt": "/8th-final-3team-front/static/js/2.59b621b2.chunk.js.LICENSE.txt",
     "static/media/Ryan.png": "/8th-final-3team-front/static/media/Ryan.5a3ff4c9.png",
     "static/media/roulette_button.png": "/8th-final-3team-front/static/media/roulette_button.483fa4fe.png",
     "static/media/roulette_button_pressed.png": "/8th-final-3team-front/static/media/roulette_button_pressed.8b77ff88.png",
@@ -25,8 +25,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.77a459ee.js",
-    "static/js/2.2536d8c4.chunk.js",
-    "static/css/main.2ba5468e.chunk.css",
-    "static/js/main.2f7b7cea.chunk.js"
+    "static/js/2.59b621b2.chunk.js",
+    "static/css/main.21f989a5.chunk.css",
+    "static/js/main.8ba8f339.chunk.js"
   ]
 }
