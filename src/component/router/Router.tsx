@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { BASE_URL } from '../../utils/Constant';
+import AddressSetting from '../address/AddressSetting';
 import Home from '../home/Home';
 import RestaurantsListPage from '../restaurant/RestaurantListPage';
 
@@ -12,6 +13,7 @@ const Router: React.FC = () => {
                 <Route path="/restaurants" exact component={RestaurantsListPage}></Route>
                 <Route path="/restaurants/:id" component={RestaurantsListPage}></Route>
             </Switch>
+            <Route path="/address" component={AddressSetting}></Route>
         </BrowserRouter>
     );
 };

@@ -7,6 +7,8 @@ import Category from '../category/Category';
 import Title from '../title/Title';
 import Turntable from '../turntable/TurntableSix';
 import WHEEL_NORMAL from '../svg/six_wheel/wheel_normal.svg';
+import ROULETTE_BUTTON from '../../icon/roulette_button.png';
+import findAddress, { AddressResponse } from '../../apis/findAddress';
 
 export interface NearRestaurantProps {
     restaurants: RestaurantDetail[];
@@ -26,11 +28,13 @@ export interface RestaurantDetail {
 
 function Home() {
     const [isSuccess, setIsSuccess] = useState(false);
+    const [address, setAddress] = useState<AddressResponse>();
     const [restaurantProps, setRestaurantProps] = useState<NearRestaurantProps>();
 
     useEffect(() => {
         async function getRestaurants() {
             if (!isSuccess) {
+                setAddress(await findAddress(37.402056, 127.108212));
                 setRestaurantProps(await findAllNearRestaurants(37.402056, 127.108212));
                 setIsSuccess(true);
             }
@@ -60,7 +64,11 @@ function Home() {
 
     return (
         <div className="Home">
-            <Address></Address>
+            {isSuccess ? (
+                <Address meta={address!.meta} address={address!.address} roadAddress={address!.roadAddress}></Address>
+            ) : (
+                <div>검색 중..</div>
+            )}
             <Title></Title>
             {isSuccess ? (
                 <Turntable
@@ -69,7 +77,10 @@ function Home() {
                     nowLongitude={restaurantProps!.nowLongitude}
                 ></Turntable>
             ) : (
-                <img src={WHEEL_NORMAL} alt="IDLE"></img>
+                <div className="turntable">
+                    <img src={WHEEL_NORMAL} alt="IDLE"></img>
+                    <img className="roulette_button" src={ROULETTE_BUTTON} width="88" alt="roulette_button" />
+                </div>
             )}
 
             {isSuccess ? (

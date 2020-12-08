@@ -6,7 +6,6 @@ import KakaoMap from './KakaoMap';
 import RestaurantItem from './RestaurantItem';
 import { MAP_DETAIL_API_URL } from '../../utils/Constant';
 import { Button, withStyles } from '@material-ui/core';
-import WHEEL_NORMAL from '../svg/six_wheel/wheel_normal.svg';
 
 interface RestaurantProps {
     restaurants: Place[];

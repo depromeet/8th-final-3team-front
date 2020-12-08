@@ -1,13 +1,30 @@
 header {
     display: flex;
-    justify-content: space-between;
-    padding-top: 20px;
+    justify-content: center;
+    padding-top: 40px;
     align-items: center;
 }
 
-.header__temp-box {
-    background: #cdcdcd;
+.address {
+    cursor: pointer;
+}
+
+.address:active {
     opacity: 0.3;
-    border-radius: 5px;
-    padding: 15px;
+}
+
+.address img {
+    width: 16px;
+    height: 16px;
+}
+
+.address span {
+    font-weight: 500;
+    font-size: 17px;
+    margin-right: 4px;
+}
+
+.menu img {
+    width: 30px;
+    height: 30px;
 }
