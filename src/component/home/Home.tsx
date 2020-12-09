@@ -1,5 +1,5 @@
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import findAllNearRestaurants from '../../apis/findAllNearRestaurants';
 import { Place } from '../../apis/findNearRestaurants';
 import Address from '../address/Address';
@@ -8,7 +8,9 @@ import Title from '../title/Title';
 import Turntable from '../turntable/TurntableSix';
 import WHEEL_NORMAL from '../svg/six_wheel/wheel_normal.svg';
 import ROULETTE_BUTTON from '../../icon/roulette_button.png';
-import findAddress, { AddressResponse } from '../../apis/findAddress';
+import findAddress, { AddressProps } from '../../apis/findAddress';
+import { useContextDispatch, useContextState } from '../context/Context';
+import IncompleteModal from '../incomplete/IncompleteModal';
 
 export interface NearRestaurantProps {
     restaurants: RestaurantDetail[];
@@ -28,46 +30,48 @@ export interface RestaurantDetail {
 
 function Home() {
     const [isSuccess, setIsSuccess] = useState(false);
-    const [address, setAddress] = useState<AddressResponse>();
+    const [address, setAddress] = useState<AddressProps>();
     const [restaurantProps, setRestaurantProps] = useState<NearRestaurantProps>();
+    const dispatch = useContextDispatch();
 
     useEffect(() => {
-        async function getRestaurants() {
-            if (!isSuccess) {
-                setAddress(await findAddress(37.402056, 127.108212));
-                setRestaurantProps(await findAllNearRestaurants(37.402056, 127.108212));
-                setIsSuccess(true);
-            }
-        }
-        getRestaurants();
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                async function getRestaurants() {
+                    if (!isSuccess) {
+                        const latitude = pos.coords.latitude;
+                        const longitude = pos.coords.longitude;
 
-        // navigator.geolocation.getCurrentPosition(
-        //     (pos) => {
-        //         async function getRestaurants() {
-        //             if (!isSuccess) {
-        //                 setRestaurantProps(await findNearRestaurants(pos.coords.latitude, pos.coords.longitude));
-        //                 setIsSuccess(true);
-        //             }
-        //         }
-        //         getRestaurants();
-        //     },
-        //     (error) => {
-        //         console.log('Error Code: ' + error.code + ', Error Description: ' + error.message);
-        //     },
-        //     {
-        //         enableHighAccuracy: false,
-        //         maximumAge: 30000,
-        //         timeout: 5000,
-        //     }
-        // );
-    }, [isSuccess]);
+                        dispatch({ type: 'SET_LATITUDE', latitude });
+                        dispatch({ type: 'SET_LONGITUDE', longitude });
+                        setAddress(await findAddress(latitude, longitude));
+                        setRestaurantProps(await findAllNearRestaurants(latitude, longitude));
+                        setIsSuccess(true);
+                    }
+                }
+                getRestaurants();
+            },
+            (error) => {
+                console.log('Error Code: ' + error.code + ', Error Description: ' + error.message);
+            },
+            {
+                enableHighAccuracy: false,
+                maximumAge: 30000,
+                timeout: 5000,
+            }
+        );
+    }, [dispatch, isSuccess]);
 
     return (
         <div className="Home">
             {isSuccess ? (
                 <Address meta={address!.meta} address={address!.address} roadAddress={address!.roadAddress}></Address>
             ) : (
-                <div>검색 중..</div>
+                <header>
+                    <div className="address">
+                        <span> 검새 중... </span>
+                    </div>
+                </header>
             )}
             <Title></Title>
             {isSuccess ? (

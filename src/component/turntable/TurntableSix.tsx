@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
         height: 124,
         backgroundColor: theme.palette.background.paper,
         borderRadius: '8px',
+        outline: 'none',
     },
 }));
 

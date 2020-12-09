@@ -4,7 +4,7 @@ import JapanFood from '../icon/japan.png';
 import KoreanFood from '../icon/korean.png';
 import WesternFood from '../icon/western.png';
 import SnackFood from '../icon/snack.png';
-import TacoFood from '../icon/taco.png';
+import AsiaFood from '../icon/asia.png';
 
 const API_KEY = 'e098b0846d802c97d805c329d7b138d0';
 export const MAP_API_URL = 'https://dapi.kakao.com/v2/local/search/keyword.json';
@@ -29,7 +29,7 @@ export const CATEGORIES: category[] = [
     { name: '양식', icon: WesternFood },
     { name: '일식', icon: JapanFood },
     { name: '분식', icon: SnackFood },
-    { name: '동남아 음식', icon: TacoFood },
+    { name: '아시아 음식', icon: AsiaFood },
 ];
 
 export function makeQuery(latitude: number, longitude: number, category: string, page: number = 1): string[] {
@@ -38,5 +38,4 @@ export function makeQuery(latitude: number, longitude: number, category: string,
 
 export function makeLocationQuery(latitude: number, longitude: number) {
     return [`y=${latitude}`, `x=${longitude}`];
-
 }

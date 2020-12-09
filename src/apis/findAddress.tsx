@@ -1,7 +1,7 @@
 import { ADDRESS_API_URL, makeLocationQuery } from '../utils/Constant';
 import fetchData from './fetchData';
 
-export interface AddressResponse {
+export interface AddressProps {
     meta: Meta;
     address: Address;
     roadAddress: RoadAddress;
@@ -63,7 +63,7 @@ interface RawDocument {
     };
 }
 
-export default async function findAddress(latitude: number, longitude: number): Promise<AddressResponse> {
+export default async function findAddress(latitude: number, longitude: number): Promise<AddressProps> {
     const query = makeLocationQuery(latitude, longitude);
     const rawAddressResponse = await fetchData<RawAddressResponse>(ADDRESS_API_URL, query);
     const address = rawAddressResponse.documents[0].address as Address;

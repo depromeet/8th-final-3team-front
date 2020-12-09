@@ -7,8 +7,6 @@ export interface MenuProps {
     id: number;
     total: number;
     icon: string;
-    nowLatitude: number;
-    nowLongitude: number;
     restaurants: Place[];
 }
 
@@ -27,8 +25,6 @@ const Category: React.FC<NearRestaurantProps> = (restaurantProps) => {
                             id={restaurant.id}
                             total={restaurant.count}
                             icon={restaurant.icon}
-                            nowLatitude={restaurant.nowLatitude}
-                            nowLongitude={restaurant.nowLongitude}
                             restaurants={restaurant.restaurants}
                         ></Menu>
                     );

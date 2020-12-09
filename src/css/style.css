@@ -23,7 +23,7 @@ code {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 60px;
+    padding-top: 50px;
 }
 
 .main__title-text {
@@ -33,6 +33,7 @@ code {
 }
 
 .main__title-edit-icon {
+    cursor: pointer;
     width: 40px;
     height: 40px;
 }
@@ -102,7 +103,7 @@ code {
 }
 
 .kakaoMap {
-    width: 500px;
+    width: 100%;
     height: 300px;
     position: fixed;
 }
@@ -190,7 +191,7 @@ a:active {
 }
 
 .roulette_button {
-    position: fixed;
+    position: absolute;
     cursor: pointer;
 }
 

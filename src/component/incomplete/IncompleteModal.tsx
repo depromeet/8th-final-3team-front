@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
         height: 124,
         backgroundColor: theme.palette.background.paper,
         borderRadius: '8px',
+        outline: 'none',
     },
 }));
 
@@ -36,14 +37,14 @@ const CloseButton = withStyles((theme) => ({
     },
 }))(Button);
 
-const IncompleteModal: React.FC = () => {
+export interface IncompleteModalProps {
+    isOpen: boolean;
+    handleClose: () => void;
+}
+
+const IncompleteModal: React.FC<IncompleteModalProps> = ({ isOpen, handleClose }: IncompleteModalProps) => {
     const styles = useStyles();
     const [modalStyle] = useState(getModalStyle);
-    const [isClose, setClose] = useState(false);
-
-    const handleClose = () => {
-        setClose(true);
-    };
 
     const body = (
         <div style={modalStyle} className={styles.paper}>
@@ -54,7 +55,7 @@ const IncompleteModal: React.FC = () => {
         </div>
     );
 
-    return <Modal open={isClose}>{body}</Modal>;
+    return <Modal open={isOpen}>{body}</Modal>;
 };
 
 export default IncompleteModal;
