@@ -5,7 +5,7 @@ import IncompleteModal from '../incomplete/IncompleteModal';
 const Title: React.FC = () => {
     const [isOpen, setOpen] = useState(false);
 
-    const handleClick = () => {};
+    // const handleClick = () => {};
 
     const handleModalOpen = () => {
         setOpen(true);

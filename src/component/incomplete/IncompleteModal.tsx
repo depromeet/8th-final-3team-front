@@ -48,7 +48,7 @@ const IncompleteModal: React.FC<IncompleteModalProps> = ({ isOpen, handleClose }
 
     const body = (
         <div style={modalStyle} className={styles.paper}>
-            <div className="modal__title">구현 중</div>
+            <div className="modal__title">준비 중인 기능입니다.</div>
             <div className="modal__body">
                 <CloseButton onClick={handleClose}>닫기</CloseButton>
             </div>

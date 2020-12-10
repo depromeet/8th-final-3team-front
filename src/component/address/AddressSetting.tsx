@@ -17,7 +17,8 @@ const AddressSetting: React.FC = () => {
                 <h1>주소 설정</h1>
                 <span></span>
             </div>
-            {address.address.address_name}
+            <div className="header__address-search"></div>
+            <div className="header__address-buttons"></div>
         </div>
     );
 };

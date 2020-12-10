@@ -29,21 +29,3 @@ header {
     height: 30px;
 }
 
-.header__address-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 58px;
-    padding-bottom: 10px;
-}
-
-.header__address-title h1 {
-    font-size: 17px;
-    font-weight: 500px;
-    margin-right: 20px;
-}
-.header__address-back {
-    width: 24px;
-    height: 24px;
-    margin-left: 20px;
-}

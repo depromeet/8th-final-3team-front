@@ -60,7 +60,10 @@ const RestaurantsListPage: React.FC = () => {
     useEffect(() => {
         async function getRestuarantListDetail() {
             const restaurants = restaurantProps.restaurants.map((restaurant) => {
-                return fetchData<RestuarantListDetail>(MAP_DETAIL_API_URL + restaurant.id, []);
+                return fetchData<RestuarantListDetail>(MAP_DETAIL_API_URL + restaurant.id, [
+                    `x=${restaurant.x}`,
+                    `y=${restaurant.y}`,
+                ]);
             });
             setRestuarantListDetail(await Promise.all(restaurants));
         }
@@ -71,10 +74,13 @@ const RestaurantsListPage: React.FC = () => {
         setFetching(true);
         if (restuarantListDetails.length !== total) {
             setPage(page + 1);
-            const nextRestaurantIds = await findNearRestaurants(latitude, longitude, Number(params.id), page);
+            const nextRestaurants = await findNearRestaurants(latitude, longitude, Number(params.id), page);
 
-            const promissedRestaurants = nextRestaurantIds.ids.map((id) => {
-                return fetchData<RestuarantListDetail>(MAP_DETAIL_API_URL + id, []);
+            const promissedRestaurants = nextRestaurants.map((restaurant) => {
+                return fetchData<RestuarantListDetail>(MAP_DETAIL_API_URL + restaurant.id, [
+                    `x=${restaurant.x}`,
+                    `y=${restaurant.y}`,
+                ]);
             });
             const addedRestaurants = await Promise.all(promissedRestaurants);
             setRestuarantListDetail(restuarantListDetails.concat(addedRestaurants));
@@ -92,6 +98,13 @@ const RestaurantsListPage: React.FC = () => {
         }
     };
 
+    const handleRandom = () => {
+        if (restuarantListDetails.length > 0) {
+            const selectedReataurant = restuarantListDetails[Math.floor(Math.random() * restuarantListDetails.length)];
+            return (document.location.href = `https://place.map.kakao.com/${selectedReataurant.placeId}`);
+        }
+    };
+
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return () => {
@@ -101,7 +114,7 @@ const RestaurantsListPage: React.FC = () => {
 
     return (
         <div className="header__restaurantList">
-            <KakaoMap latitude={latitude} longitude={longitude}></KakaoMap>
+            <KakaoMap latitude={latitude} longitude={longitude} restaurants={restuarantListDetails}></KakaoMap>
             <div className="header__restaurantList-detail">
                 {restuarantListDetails.map((restaurantDetail, index) => {
                     return (
@@ -121,7 +134,7 @@ const RestaurantsListPage: React.FC = () => {
                 })}
             </div>
             <div className="floating_button__wrapper">
-                <FloatingButton>음식점도 골라주세요!</FloatingButton>
+                <FloatingButton onClick={handleRandom}>음식점도 골라주세요!</FloatingButton>
             </div>
         </div>
     );

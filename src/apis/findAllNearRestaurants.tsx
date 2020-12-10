@@ -25,5 +25,5 @@ export default async function findAllNearRestaurants(
         };
     });
 
-    return { restaurants: restaurants, nowLatitude: latitude, nowLongitude: longitude };
+    return { restaurants: restaurants};
 }

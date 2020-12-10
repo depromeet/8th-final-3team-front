@@ -1,5 +1,5 @@
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import findAllNearRestaurants from '../../apis/findAllNearRestaurants';
 import { Place } from '../../apis/findNearRestaurants';
 import Address from '../address/Address';
@@ -9,13 +9,10 @@ import Turntable from '../turntable/TurntableSix';
 import WHEEL_NORMAL from '../svg/six_wheel/wheel_normal.svg';
 import ROULETTE_BUTTON from '../../icon/roulette_button.png';
 import findAddress, { AddressProps } from '../../apis/findAddress';
-import { useContextDispatch, useContextState } from '../context/Context';
-import IncompleteModal from '../incomplete/IncompleteModal';
+import { useContextDispatch } from '../context/Context';
 
 export interface NearRestaurantProps {
     restaurants: RestaurantDetail[];
-    nowLatitude: number;
-    nowLongitude: number;
 }
 
 export interface RestaurantDetail {
@@ -77,8 +74,6 @@ function Home() {
             {isSuccess ? (
                 <Turntable
                     restaurants={restaurantProps!.restaurants}
-                    nowLatitude={restaurantProps!.nowLatitude}
-                    nowLongitude={restaurantProps!.nowLongitude}
                 ></Turntable>
             ) : (
                 <div className="turntable">
@@ -87,15 +82,21 @@ function Home() {
                 </div>
             )}
 
-            {isSuccess ? (
-                <Category
-                    restaurants={restaurantProps!.restaurants}
-                    nowLatitude={restaurantProps!.nowLatitude}
-                    nowLongitude={restaurantProps!.nowLongitude}
-                ></Category>
-            ) : (
-                <CircularProgress></CircularProgress>
-            )}
+            <div className="category">
+                <div className="cageory__title-text">
+                    <h2>카테고리</h2>
+                    <h3>도보 10분 이내</h3>
+                </div>
+                {isSuccess ? (
+                    <Category
+                        restaurants={restaurantProps!.restaurants}
+                    ></Category>
+                ) : (
+                    <div className="progress">
+                        <CircularProgress></CircularProgress>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

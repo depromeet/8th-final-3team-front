@@ -35,7 +35,7 @@ export interface Meta {
 }
 
 export interface NextRestaurant {
-    ids: number[];
+    nearRestaurants: Place[];
 }
 
 export default async function findNearRestaurants(
@@ -43,11 +43,10 @@ export default async function findNearRestaurants(
     longitude: number,
     categoryIndex: number,
     page: number
-): Promise<NextRestaurant> {
+): Promise<Place[]> {
     const query = makeQuery(latitude, longitude, CATEGORIES[categoryIndex].name, page);
     const places = await fetchData<Places>(MAP_API_URL, query);
-    const nearRestaurantIds = places.documents.map((place) => {
-        return Number(place.id);
+    return places.documents.map((place) => {
+        return place;
     });
-    return { ids: nearRestaurantIds };
 }
