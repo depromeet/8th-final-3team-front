@@ -1,6 +1,6 @@
 {
-    "short_name": "React App",
-    "name": "Create React App Sample",
+    "short_name": "아무거나",
+    "name": "결정 장애들을 위한 음식점 추천 서비스 아무거나",
     "icons": [
         {
             "src": "favicon.ico",
