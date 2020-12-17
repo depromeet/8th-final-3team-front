@@ -2,7 +2,7 @@
 
 <img width="1077" alt="스크린샷 2020-12-15 오전 12 36 37" src="https://user-images.githubusercontent.com/43809168/102101129-978eaf00-3e6d-11eb-98ca-63ca61de0cac.png">
 
-### 뭐 먹고 싶어? 아무거나!
+### 뭐 먹고 싶어? 아무거나
 
 ### [아무거나 서비스 사용해보기](https://depromeet.github.io/8th-final-3team-front/)
 

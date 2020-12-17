@@ -105,6 +105,7 @@ const TurntableSix: React.FC<NearRestaurantProps> = (nearRestaurantProps) => {
             acc += 10;
         }
 
+        setIndex(index);
         if (spinTime >= totalSpinTime) {
             clearTimeout(timer);
             setTimeout(() => {
@@ -113,7 +114,6 @@ const TurntableSix: React.FC<NearRestaurantProps> = (nearRestaurantProps) => {
             }, 2000);
             return;
         }
-        setIndex(index);
         timer = setTimeout(() => rotateWheel((index + 1) % wheels.length), 50 + acc);
     };
 

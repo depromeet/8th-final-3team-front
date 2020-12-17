@@ -26,8 +26,8 @@ interface category {
 export const CATEGORIES: category[] = [
     { name: '한식', icon: KoreanFood },
     { name: '중식', icon: ChinaFood },
-    { name: '양식', icon: WesternFood },
     { name: '일식', icon: JapanFood },
+    { name: '양식', icon: WesternFood },
     { name: '분식', icon: SnackFood },
     { name: '아시아 음식', icon: AsiaFood },
 ];
