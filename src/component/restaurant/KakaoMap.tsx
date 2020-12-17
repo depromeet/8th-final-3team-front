@@ -29,9 +29,6 @@ const KakaoMap: React.FC<KakaoMapProps> = (kakaoMapProps) => {
         });
 
         kakaoMapProps.restaurants.forEach((restaurant) => {
-            console.log(`${kakaoMapProps.latitude} ${kakaoMapProps.longitude}`);
-            console.log(`${restaurant.placeId} ${restaurant.y} ${restaurant.x}`);
-
             const imageSize = new window.kakao.maps.Size(21, 21);
             const markerImage = new window.kakao.maps.MarkerImage(Pin, imageSize);
 

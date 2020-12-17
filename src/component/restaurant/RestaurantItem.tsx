@@ -7,7 +7,6 @@ const RestaurantItem: React.FC<RestuarantListDetail> = (restaurant) => {
     const handleOnClick = () => {
         return (document.location.href = `https://place.map.kakao.com/${restaurant.placeId}`);
     };
-
     return (
         <div className="restaurant__list" onClick={handleOnClick}>
             <div className="restaurant__list-text">
