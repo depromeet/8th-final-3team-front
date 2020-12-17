@@ -8,10 +8,17 @@
 
 본 저장소는 디프만 8기 파이널 프로젝트 **결정 장애들을 위한 음식점 추천 서비스** `아무거나`의 소개 페이지 입니다.
 
+### 주의할 점
+
+본 프로젝트는 **Mobile First**로 개발되었으므로 웹에서는 UI가 정상적으로 나오지 않을 수 있습니다.
+
+가급적이면 스마트폰 또는 웹에서 사용한다면 화면의 가로사이즈를 최소한으로 해서 사용해주시기 바랍니다.
+
 ## 개발자
 
 <img src="https://img.shields.io/badge/-harry.code(%EC%A1%B0%EB%AF%BC%EA%B5%AD)-blue">
-<img src="https://img.shields.io/badge/-denis.dev(%EB%B0%B0%ED%98%95%EC%A7%84)-yellow">
+
+<img src="https://img.shields.io/badge/-denis.dev(%EB%B0%B0%ED%98%95%EC%A7%84)-yellow"> - **Special Thanks**
 
 ## 기술 스택
 
