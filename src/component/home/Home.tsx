@@ -66,7 +66,7 @@ function Home() {
             ) : (
                 <header>
                     <div className="address">
-                        <span> 검새 중... </span>
+                        <span> 검색 중... </span>
                     </div>
                 </header>
             )}
